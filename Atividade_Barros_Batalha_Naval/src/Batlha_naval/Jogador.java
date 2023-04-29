@@ -180,6 +180,8 @@ public class Jogador {
         Jogador jogador1, jogador2;
         int contador = 0;
         int rodada = 1;
+        int agua = 0;
+        int total = 0;
         while (this.Atingidas > 0 && adversario.Atingidas > 0) {
             if (contador < 2) {
                 jogador1 = adversario;
@@ -193,10 +195,12 @@ public class Jogador {
             System.out.println( "É sua vez, " + jogador1.nome);
             jogador2.registrarTiro(jogador1);
             System.out.println(contador);
+            total++;
             contador++;
             if (contador==4) {
                 contador = 0;
                 rodada++;
+                total = total - 2;
             }
         }
         if (adversario.Atingidas == 0) {
@@ -204,6 +208,8 @@ public class Jogador {
         } else {
             System.out.println("Parabéns " + this.nome + " você venceu o jogo!!");
         }
+        agua = total - 6;
+        System.out.println("Foram " + total + " Tiros, desses tiros " + agua + " na Água");
         System.out.println("--------- TABULEIRO ADVERSÁRIO ----------");
         mostrarTabuleiro(this.jogoDoAdversario);
         System.out.println("----------- MEU TABULEIRO -----------");
